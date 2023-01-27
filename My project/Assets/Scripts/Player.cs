@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 5.0f;
+    public float shiftspeed = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,15 @@ public class Player : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         transform.position += movement * speed * Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.position += movement * shiftspeed * Time.deltaTime;
+        }
+        else
+        {
+            transform.position += movement * speed * Time.deltaTime;
+        }
 
 
     }
